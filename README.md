@@ -1,8 +1,9 @@
 Steps:
 
-Need install dev tools and libs
+Need install dev tools and libs:
 
 apt install -y build-essential && apt -y install libpcre3 libssl-dev libpcre3-dev libssl-dev libxml2-dev libxslt-dev libgd-dev libgeoip-dev
+
 Download module and source code 
 
 sudo mkdir -p /opt/develop
@@ -17,15 +18,14 @@ sudo make install
 #If nginx installed , replace bin file from build
 sudo cp /opt/develop/nginx-14.1.2/objs/nginx /usr/sbin/nginx
 echo "load_module /usr/lib/nginx/modules/ngx_http_cookie_flag_filter_module.so;" >> /etc/nginx/nginx.conf
+
 And than true add set_cookie_flag to site-enables config file
 
 set_cookie_flag HttpOnly secure SameSite=None;
 
 NOTE:
-
 Also you can check nginx arguments with nginx -V
-
-for example with nginx installed from repo
+for example with nginx installed from repo:
 
 CONFARGS=$(nginx -V 2>&1 | sed -n -e 's/^.*arguments: //p')
 echo $CONFARGS
